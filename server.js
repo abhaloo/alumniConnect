@@ -7,6 +7,10 @@ const app = express();
 //Connect database
 connectDB();
 
+//Initialize middleware 
+app.use(express.json({ extended: false }));
+
+
 //this will be invoked when a request is made
 // res - response
 // req - request  
