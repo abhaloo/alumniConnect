@@ -55,7 +55,7 @@ router.post('/',
 
     // Encrypt user password
     const salt = await bcrypt.genSalt(10);
-    user.password == await bcrypt.hash(password, salt);
+    user.password = await bcrypt.hash(password, salt);
 
     //save() returns a promise, thus we use await
     await user.save()
@@ -71,7 +71,7 @@ router.post('/',
         payload,
         config.get('jwtToken'), 
         {
-            expiresIn: 36000 //reduce to 3600(1 hour) after testing
+            expiresIn: 3600000 //reduce to 3600(1 hour) after testing
         },
         (err,token) => {
             if(err) throw err;
